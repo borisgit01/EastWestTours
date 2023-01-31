@@ -25,6 +25,9 @@ public interface TourRatingRepository extends CrudRepository<TourRating, Integer
      */
     List<TourRating> findByTourId(Integer tourId);
 
+    @Override
+    List<TourRating> findAll();
+
     /**
      * Lookup a page of TourRatings for a tour.
      *
