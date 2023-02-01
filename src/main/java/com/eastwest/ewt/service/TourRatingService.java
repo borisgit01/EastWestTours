@@ -4,7 +4,6 @@ import com.eastwest.ewt.domain.Tour;
 import com.eastwest.ewt.domain.TourRating;
 import com.eastwest.ewt.repo.TourRatingRepository;
 import com.eastwest.ewt.repo.TourRepository;
-import com.eastwest.ewt.web.TourRatingController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -174,7 +173,7 @@ public class TourRatingService {
      * @return the found TourRating
      * @throws NoSuchElementException if no TourRating found
      */
-    private TourRating verifyTourRating(int tourId, int customerId) throws NoSuchElementException {
+    public TourRating verifyTourRating(int tourId, int customerId) throws NoSuchElementException {
         return tourRatingRepository.findByTourIdAndCustomerId(tourId, customerId).orElseThrow(() ->
                 new NoSuchElementException("Tour-Rating pair for request("
                         + tourId + " for customer" + customerId));
