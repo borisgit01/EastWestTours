@@ -1,36 +1,27 @@
-package com.example.ec.web;
+package com.eastwest.ewt.web;
 
-import com.example.ec.domain.Tour;
-import com.example.ec.domain.TourRating;
-import com.example.ec.service.TourRatingService;
-import org.hamcrest.CoreMatchers;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import com.eastwest.ewt.domain.Tour;
+import com.eastwest.ewt.domain.TourRating;
+import com.eastwest.ewt.service.TourRatingService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.core.Is.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-
+import static org.hamcrest.core.Is.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.verify;
@@ -44,7 +35,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
  * Created by Mary Ellen Bowman.
  */
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 public class TourRatingControllerTest {
 
@@ -69,7 +60,7 @@ public class TourRatingControllerTest {
 
     private RatingDto ratingDto = new RatingDto(SCORE, COMMENT,CUSTOMER_ID);
 
-    @Before
+    @BeforeEach
     public void setupReturnValuesOfMockMethods() {
         when(tourRatingMock.getComment()).thenReturn(COMMENT);
         when(tourRatingMock.getScore()).thenReturn(SCORE);
@@ -180,7 +171,7 @@ public class TourRatingControllerTest {
      *      restTemplate.getRestTemplate().setRequestFactory(new HttpComponentsClientHttpRequestFactory());
      */
     @Test
-    @Ignore
+    @Disabled
     public  void updateWithPatch() {
         when(serviceMock.updateSome(TOUR_ID, CUSTOMER_ID, SCORE, COMMENT))
                 .thenReturn(tourRatingMock);
